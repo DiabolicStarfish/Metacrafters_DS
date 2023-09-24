@@ -31,7 +31,7 @@ function listNFTs () {
 
 // print the total number of NFTs we have minted to the console
 function getTotalSupply() {
-    if(holdNFT[0].id == null || holdNFT[0].name == null){
+    if(holdNFT[0].id == null || holdNFT[1].id == null || holdNFT[2].id == null){
         console.log("There are no minted NFTs.");
     }else{
         for(let i = 0; i<holdNFT.length; i++){
