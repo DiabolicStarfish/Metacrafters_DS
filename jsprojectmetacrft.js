@@ -23,9 +23,13 @@ function mintNFT (referenceId,nftName,index) {
 // create a "loop" that will go through an "array" of NFT's
 // and print their metadata with console.log()
 function listNFTs () {
-    for(let i = 0; i<holdNFT.length; i++){
-        console.log(holdNFT[i].id);
-        console.log(holdNFT[i].name);
+    if(holdNFT[0].id != undefined && holdNFT[1].id != undefined && holdNFT[2].id != undefined){
+        for(let i = 0; i<holdNFT.length; i++){
+            console.log(holdNFT[i].id);
+            console.log(holdNFT[i].name);
+        }
+    }else{
+        console.log("There are no NFTs to list.");
     }
 }
 
