@@ -31,10 +31,7 @@ contract MyToken {
     }
     // burn function
     function burn(address _address, uint _value) public {
-        if(balances[_address] >= _value) {
-            totalSupply += _value;
-            balances[_address] += _value;
-        }
+        require(balances[_address] >= _value, "Not enough balance to burn");
         totalSupply -= _value;
         balances[_address] -= _value;
     }
