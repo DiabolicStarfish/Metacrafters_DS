@@ -26,6 +26,10 @@ contract MyToken {
     mapping(address => uint) public balances;
     // mint function
     function mint(address _address, uint _value) public {
+        assert(_value > 0)
+        if(_value > 10000) {
+            revert("Value is too high. Only 10000 tokens can be minted at a time.");
+        }
         totalSupply += _value;
         balances[_address] += _value;
     }
