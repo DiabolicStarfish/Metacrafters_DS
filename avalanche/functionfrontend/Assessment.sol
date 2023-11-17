@@ -6,7 +6,6 @@ pragma solidity ^0.8.9;
 contract Assessment {
     address payable public owner;
     uint256 public balance;
-    uint256 public totalSupply;
 
     event Deposit(uint256 amount);
     event Withdraw(uint256 amount);
@@ -17,7 +16,6 @@ contract Assessment {
     constructor(uint initBalance) payable {
         owner = payable(msg.sender);
         balance = initBalance;
-        totalSupply = initBalance;
     }
 
     function getBalance() public view returns(uint256){
@@ -72,7 +70,6 @@ contract Assessment {
 
         // mint the given amount
         balance += _amount;
-        totalSupply += _amount;
 
         // assert the balance is correct
         assert(balance == (_previousBalance + _amount));
@@ -93,7 +90,6 @@ contract Assessment {
 
         // burn the given amount
         balance -= _amount;
-        totalSupply -= _amount;
 
         // assert the balance is correct
         assert(balance == (_previousBalance - _amount));
@@ -101,4 +97,5 @@ contract Assessment {
         // emit the event
         emit Burn(_amount);
     }
+
 }
