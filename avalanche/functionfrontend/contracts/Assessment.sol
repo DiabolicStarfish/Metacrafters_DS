@@ -9,9 +9,7 @@ contract Assessment {
 
     event Deposit(uint256 amount);
     event Withdraw(uint256 amount);
-
-    event Mint(uint256 amount);
-    event Burn(uint256 amount);
+    event WithdrawAll(uint256 amount);
 
     constructor(uint initBalance) payable {
         owner = payable(msg.sender);
@@ -60,42 +58,22 @@ contract Assessment {
         // emit the event
         emit Withdraw(_withdrawAmount);
     }
-    function mint(uint256 _amount) public {
+
+    function withdrawAll(uint256 _amount) public {
         require(msg.sender == owner, "You are not the owner of this account");
-        require(_amount >= 10, "Value is too low. Minimum 10 ETH can be minted at a time.");
-        uint _previousBalance = balance;
-        if (_amount > 100) {
-            revert("Value is too high. Only 100 ETH can be minted at a time.");
+
+        while (balance !=0) {
+            uint256 withdrawalAmount = _amount;
+
+            if (withdrawalAmount > balance) {
+                withdrawalAmount = balance;
+            }
+
+            balance -= withdrawalAmount;
+
+            emit WithdrawAll(withdrawalAmount);
         }
-
-        // mint the given amount
-        balance += _amount;
-
-        // assert the balance is correct
-        assert(balance == (_previousBalance + _amount));
-
-        // emit the event
-        emit Mint(_amount);
-    }
-    function burn(uint256 _amount) public {
-        require(msg.sender == owner, "You are not the owner of this account");
-        require(_amount >= 10, "Value is too low. Minimum 10 ETH can be burned at a time.");
-        uint _previousBalance = balance;
-        if (balance < _amount) {
-            revert InsufficientBalance({
-                balance: balance,
-                withdrawAmount: _amount
-            });
-        }
-
-        // burn the given amount
-        balance -= _amount;
-
-        // assert the balance is correct
-        assert(balance == (_previousBalance - _amount));
-
-        // emit the event
-        emit Burn(_amount);
+        assert(balance == 0);
     }
 
 }
