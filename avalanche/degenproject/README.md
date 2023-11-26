@@ -1,41 +1,35 @@
-# Project Title
+# Project Degen
 
-Simple overview of use/purpose.
+## Executing the project
+#### Deploying the Contract
+1. Open Remix IDE
+2. Upload the the needed files
+3. Compile the contract
+4. Deploy the contract with an environment of Injected Provider - Metamask
 
-## Description
+#### Minting
+1. Copy the account address of the deployed contract
+2. Paste it in the mint tab
+3. Input the amount of tokens to mint
 
-An in-depth paragraph about your project and overview of use.
+#### Burning
+1. Copy the account address of the deployed contract
+2. Paste it in the burn tab
+3. Input the amount of tokens to burn
 
-## Getting Started
+#### Transferring
+1. Copy the account address of the receipient
+2. Paste it in the transfer tab
+3. Make sure that the account address of the deployed contract is the sender
+4. Input the amount of tokens to transfer
+5. Click the transfer button
 
-### Installing
-
-* How/where to download your program
-* Any modifications needed to be made to files/folders
-
-### Executing program
-
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
-
-## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
+#### Redeeming
+1. Choose an item to redeem
+2. Input the item ID
+3. Click the redeem button
 
 ## Authors
 
-Contributors names and contact info
-
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
-
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
+DiabolicStarfish <br>
+[Dstarfish](https://github.com/DiabolicStarfish)
